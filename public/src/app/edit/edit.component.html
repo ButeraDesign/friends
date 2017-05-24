@@ -1,0 +1,70 @@
+<p>
+  edit works!
+</p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="col-md-6 col-md-offset-2 well">
+  <p>
+    create works!
+  </p>
+<form (submit)="onUpdate();" >
+
+  First Name:
+  <input type="text" name="firstName"
+  required
+  minlength="2"
+  maxlength="24"
+  [(ngModel)]="friend.firstName"
+  value={{friend.firstName}}
+  #firstName='ngModel' class="form-control"><br>
+
+  <div *ngIf=" (firstName.errors && ( firstName.dirty || firstName.touched))"
+     class="alert alert-danger">
+    <div [hidden]="!firstName.errors.required">
+      First Name is required
+    </div>
+    <div [hidden]="!firstName.errors.minlength">
+      First Name must be at least 4 characters long.
+    </div>
+    <div [hidden]="!firstName.errors.maxlength">
+      First Name cannot be more than 24 characters long.
+    </div>
+ </div>
+
+  Last Name:
+  <input type="text" name="lastName"
+  required
+  minlength="2"
+  maxlength="24"
+  [(ngModel)]="friend.lastName"
+  value={{friend.lasttName}}
+  #lastName='ngModel' class="form-control"><br>
+
+  <div *ngIf=" (lastName.errors && ( lastName.dirty || lastName.touched))"
+     class="alert alert-danger">
+    <div [hidden]="!lastName.errors.required">
+      Last Name is required
+    </div>
+    <div [hidden]="!lastName.errors.minlength">
+      Last Name must be at least 4 characters long.
+    </div>
+    <div [hidden]="!lastName.errors.maxlength">
+      Last Name cannot be more than 24 characters long.
+    </div>
+ </div>
+
+
+ Birthday:
+ <input type="date" name="bday"
+ required
+ [(ngModel)]="friend.bday"
+ value={{friend.bday}}
+ #bday='ngModel' class="form-control"><br>
+
+
+  <input type="submit">
+</form>
+<h4>{{friend | json}}</h4>
+</div>
